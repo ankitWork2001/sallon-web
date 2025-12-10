@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* navbar custum css */
+@media (max-width:950px) {
+    .hidden-mobile{
+        display: none;
+    }
+}
+@media (min-width:951px) {
+    .desltop-hidden{
+        display: none;
+    }
+}
+
+.scrollbar-hideen::-webkit-scrollbar {
+  display: none;
+ 
+}
+
+
+
+
+
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #c49a9a, #e7d0d0, #ffffff);
+  --primary :#9333EA;
+  --secondary: #F3E8FF;
+  --accent: #f8b400;
+  --foter-gradient: linear-gradient(90deg, #320E51, #5D0AA8)
+}
+
+
+/* linear-gradient(90deg, #9333EA, #EC4899, #F43F5E) */
+/* linear-gradient(90deg, #0F2027, #203A43, #2C5364) acha */
+/* linear-gradient(90deg, #ff512f, #dd2476) */
+/* linear-gradient(135deg, #c49a9a, #e7d0d0, #ffffff) best */
+
+/* linear-gradient(90deg, #ffe1e8, #f5d0d8, #eed9f7) */
+/* linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1) */
