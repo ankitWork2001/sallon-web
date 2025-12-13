@@ -40,6 +40,7 @@ const HomeSection3 = () => {
   }, [category]);
 
   const { data, loading, error } = useSelector((state) => state.homeSalon);
+  console.log(data)
   const ButtonStyle = (btnCat) => ({
     background:
       category === btnCat ? "#d6aeb0" : "",
@@ -144,27 +145,21 @@ const HomeSection3 = () => {
                   </div>
 
 
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="font-medium">Categories:</span>
-                    {item?.categories.map((srv, i) => (
+                  <div className="flex flex-wrap gap-2 mb-3 items-center">
+                    <span className="font-semibold ">Categories:</span>
+                    { item?.categories.length>1 ? item?.categories.map((srv, i) => (
                       <span
                         key={i}
                         className="bg-green-100 text-sm rounded-2xl px-2 py-0.5"
                       >
                         {srv.name}
                       </span>
-                    ))}
+                    )):<p className="text-sm">no categories found</p>}
                   </div>
                   <div>
 
                     <p className="flex items-center text-sm text-gray-500 mb-2"> <span > <FaMapMarkerAlt className="mr-1" /> </span>{getDistance(currentlatitude, currentlongitude, item.location.coordinates[0], item.location.coordinates[1])} km</p>
 
-                  </div>
-
-                  <div className="flex justify-end text-sm">
-                    <button className="text-indigo-600 font-medium hover:underline">
-                      See More
-                    </button>
                   </div>
                 </div>
               </div>

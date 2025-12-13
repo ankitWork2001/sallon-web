@@ -9,8 +9,10 @@ const SuperAdminManageUser = () => {
   const [pageNumber, setPageNumber] = useState(1)
   const [totalPages, setTotalPages] = useState(1);
   const dispatch = useDispatch()
+    const token = localStorage.getItem('authtoken')
+
   const handlegetData = () => {
-    dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/get-all-users?page=${pageNumber}&limit=12`, key: "user", token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MDA5ZGRhYjVkZWZkY2YzMjUyNzUxNiIsInJvbGUiOiJzdXBlcl9hZG1pbiIsImlhdCI6MTc2NDI1NjIzNiwiZXhwIjoxNzY0ODYxMDM2fQ.YoRAhLqpPp4eY6kNzKdX1BWBdR7h2LGPyREjti61CRE' }))
+    dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/get-all-users?page=${pageNumber}&limit=12`, key: "user", token: token }))
   }
 
   const { data, loading, error } = useSelector((state) => state.salons)

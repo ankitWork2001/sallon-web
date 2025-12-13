@@ -85,12 +85,12 @@ const Navbar = () => {
         <div className='flex gap-2 items-center '>
           <div className='border border-gray-600 rounded-2xl px-2 md:p-0.5 flex gap-2  md:w-50 items-center ms-1  me-2'>
             <IoSearch className='text-gray-600 md:text-xl' />
-            <input className='outline-0 w-full' type="search" name="" id="" placeholder={location} />
+            <input className='outline-0 w-full' type="search" name="search location" id="location1" placeholder={location} />
           </div>
 
           <div className='border border-gray-600 rounded-2xl px-2 md:p-0.5 flex gap-2  md:w-50 items-center  me-2'>
             <IoSearch className='text-gray-600 md:text-xl' />
-            <input className='outline-0 w-full' type="search" name="" id="" placeholder='Search salons, services' />
+            <input className='outline-0 w-full' type="search" name="search salon" id="salonid1" placeholder='Search salons, services' />
           </div>
         </div>
         {/* Desktop button */}

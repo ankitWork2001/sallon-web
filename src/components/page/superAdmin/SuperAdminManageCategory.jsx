@@ -15,10 +15,9 @@ const SuperAdminManageCategory = () => {
   
 
   const token = localStorage.getItem('authtoken')
-
   const dispatch = useDispatch()
   const { data, loading, error } = useSelector((state) => state.salons)
-
+  console.log(data)
   const handlegetData = () => {
     dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/getAllCategories`, key: "saloncategory", token: token }))
   }
@@ -130,10 +129,10 @@ const SuperAdminManageCategory = () => {
                   className="cursor-pointer hover:text-blue-500 transition"
                   size={20}
                 />
-                <FiTrash2
+                {/* <FiTrash2
                   className="cursor-pointer hover:text-red-500 transition"
                   size={20}
-                />
+                /> */}
               </div>
             </div>
 

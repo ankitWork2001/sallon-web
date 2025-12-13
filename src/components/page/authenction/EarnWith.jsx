@@ -25,7 +25,7 @@ const EarnWith = () => {
       shopType: ownership,
       shopName: "",
       salonCategory: "",
-      galleryImages: [],
+      galleryImages: ['https://plus.unsplash.com/premium_photo-1669675936121-6d3d42244ab5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2Fsb258ZW58MHx8MHx8fDA%3D'],
       location: {
         type: "Point",
         coordinates: [0, 0], // [longitude, latitude]
@@ -37,7 +37,7 @@ const EarnWith = () => {
       governmentId: {
         idType: "",
         idNumber: "",
-        idImageUrl: ""
+        idImageUrl: "https://images.moneycontrol.com/static-mcnews/2025/04/20250404112835_Aadhaar-card-generated-using-AI.png"
       }
     },
     partners
@@ -123,7 +123,7 @@ const EarnWith = () => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-      const raw = JSON.stringify(fd);
+      const raw = JSON.stringify(formData);
 
       const requestOptions = {
         method: "POST",
@@ -137,13 +137,63 @@ const EarnWith = () => {
         .then((result) => {
           console.log(result)
           alert(result.message)
-          setFormData(formData.name = '')
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            password: "",
+            role: "salon_owner",
+            salonData: {
+              shopType: ownership,
+              shopName: "",
+              salonCategory: "",
+              galleryImages: [''],
+              location: {
+                type: "Point",
+                coordinates: [],
+                address: "",
+                city: "",
+                state: "",
+                pincode: ""
+              },
+              governmentId: {
+                idType: "",
+                idNumber: "",
+                idImageUrl: ""
+              }
+            },
+          })
         })
     } catch (error) {
       console.error(error)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+        role: "salon_owner",
+        salonData: {
+          shopType: ownership,
+          shopName: "",
+          salonCategory: "",
+          galleryImages: [''],
+          location: {
+            type: "Point",
+            coordinates: [],
+            address: "",
+            city: "",
+            state: "",
+            pincode: ""
+          },
+          governmentId: {
+            idType: "",
+            idNumber: "",
+            idImageUrl: ""
+          }
+        },
+      })
     }
   }
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -613,7 +663,7 @@ const EarnWith = () => {
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     defaultValue=""
                     onChange={(e) => handleSalonGovId('idType', e.target.value)}
-                    value={formData.salonData.governmentId?.idType}
+                    value={formData.salonData?.governmentId?.idType}
 
                   >
                     <option value="" disabled>
@@ -634,7 +684,7 @@ const EarnWith = () => {
                   </label>
                   <input
                     onChange={(e) => handleSalonGovId('idNumber', e.target.value)}
-                    value={formData.salonData.governmentId?.idNumber}
+                    value={formData.salonData?.governmentId?.idNumber}
                     type="number"
                     placeholder="Enter ID number"
                     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"

@@ -14,12 +14,7 @@
 
 .scrollbar-hideen::-webkit-scrollbar {
   display: none;
- 
 }
-
-
-
-
 
 
 :root {
@@ -27,6 +22,7 @@
   --primary :#9333EA;
   --secondary: #F3E8FF;
   --accent: #f8b400;
+  --pink-gradient: linear-gradient(135deg, #FA2E83, #FC296F);
   --foter-gradient: linear-gradient(90deg, #320E51, #5D0AA8)
 }
 
