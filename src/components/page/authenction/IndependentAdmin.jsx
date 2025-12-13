@@ -3,6 +3,8 @@ import React, { useEffect, useReducer, useState } from "react";
 import IndenpendtHeader from '../reusableComponent/IndenpendtHeader';
 import { initialState, registerFromReducer } from '../../../reducer/registerFrom';
 import { GrFormPreviousLink } from 'react-icons/gr';
+  import { ToastContainer, toast } from 'react-toastify';
+
 
 const IndependentAdmin = () => {
   const [state, dispatch] = useReducer(registerFromReducer, initialState);
@@ -10,7 +12,7 @@ const IndependentAdmin = () => {
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [indenpendForm, setIndenpendForm] = useState({
     name: "", email: "", phone: "", password: "",
-    role: "independent_pro", profilePhoto: "", independentData: {
+    role: "independent_pro", profilePhoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf1fiSQO7JfDw0uv1Ae_Ye-Bo9nhGNg27dwg&s", independentData: {
       specializations: "69298004f63ac61abbb13f00",
       experienceYears: "",
       gender: "",
@@ -22,6 +24,9 @@ const IndependentAdmin = () => {
       }
     },
   })
+
+        const notify = (value) => toast(value);
+
 
   console.log(indenpendForm)
   const daysList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -116,13 +121,46 @@ const IndependentAdmin = () => {
       const data = await fetch(`${import.meta.env.VITE_API_URL}auth/signup`, requestOptions)
       const result = await data.json()
       console.log(result)
-      alert(result.message)
+      notify(result.message)
+      setIndenpendForm({
+        name: "", email: "", phone: "", password: "",
+        role: "", profilePhoto: "", independentData: {
+          specializations: "",
+          experienceYears: "",
+          gender: "",
+          availability: [],
+          governmentId: {
+            idType: "",
+            idNumber: "",
+            idImageUrl: ""
+          }
+        },
+      })
     } catch (error) {
       console.log(error)
+      notify(error.message)
+       setIndenpendForm({
+        name: "", email: "", phone: "", password: "",
+        role: "", profilePhoto: "", independentData: {
+          specializations: "",
+          experienceYears: "",
+          gender: "",
+          availability: [],
+          governmentId: {
+            idType: "",
+            idNumber: "",
+            idImageUrl: ""
+          }
+        },
+      })
     }
   }
 
   return (
+    <>
+     <ToastContainer
+          theme="light"
+          />
     <div className='max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden'>
       <form onSubmit={handleSubmit}>
         <main >
@@ -216,7 +254,7 @@ const IndependentAdmin = () => {
 
                 <div className="flex gap-4 mt-4 flex-wrap">
                   <button
-                  type='button'
+                    type='button'
                     className="border border-pink-500 text-pink-500 px-4 py-2 rounded-lg"
                     onClick={selectAllDays}
                   >
@@ -224,7 +262,7 @@ const IndependentAdmin = () => {
                   </button>
 
                   <button
-                                    type='button'
+                    type='button'
 
                     className="border border-pink-500 text-pink-500 px-4 py-2 rounded-lg"
                     onClick={selectWeekDays}
@@ -237,7 +275,7 @@ const IndependentAdmin = () => {
                 <div className="grid grid-cols-3 md:grid-cols-7 gap-3 mt-6">
                   {daysList.map((day) => (
                     <button
-                                      type='button'
+                      type='button'
 
                       key={day}
                       onClick={() => toggleDay(day)}
@@ -265,7 +303,7 @@ const IndependentAdmin = () => {
                 <p className="text-gray-500 text-sm">Choose your working hours - tap slots to toggle</p>
 
                 <button
-                                  type='button'
+                  type='button'
 
                   className="mt-4 border border-pink-500 text-pink-500 px-4 py-2 rounded-lg"
                   onClick={selectAllSlots}
@@ -277,7 +315,7 @@ const IndependentAdmin = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6">
                   {timeSlotsList.map((slot) => (
                     <button
-                                      type='button'
+                      type='button'
 
                       key={slot}
                       onClick={() => toggleSlot(slot)}
@@ -395,6 +433,7 @@ const IndependentAdmin = () => {
         </main>
       </form>
     </div>
+    </>
   )
 }
 
