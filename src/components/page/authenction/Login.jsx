@@ -114,29 +114,11 @@ const Login = () => {
                 className="mt-1 block w-full rounded-md outline-0 shadow-sm focus:border-indigo-500 p-3 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
-            {/* 
-            <div>
-              <label htmlFor="Location" className="block text-sm font-medium text-gray-700">
-                Location
-              </label>
-              <input
-                style={{ background: "var(--secondary)" }}
-                id="location"
-                name="location"
-                type="text"
-                value={form.location}
-                onChange={handleChange}
-                placeholder="Enter your location"
-                required
-                className="mt-1 block w-full rounded-md outline-0 shadow-sm focus:border-indigo-500 p-3 focus:ring-indigo-500 sm:text-sm"
-              />
-              <p className='text-gray-700 text-sm p-2 font-medium'>Use My Current Location</p>
-            </div> */}
-
             <button type="submit" style={{ background: "var(--primary-gradient)" }} className="w-full inline-flex justify-center items-center px-4 py-2  text-white font-medium rounded-md  focus:outline-none focus:ring-2 cursor-pointer ">
               Login
             </button>
           </form>
+          <Link to="/forgot" className='text-blue-600 font-medium text-sm cursor-pointer hover:text-blue-700 hover:underline'>Forgot password?</Link>
           <div className='flex gap-1 items-center my-5'>
             <div className='border-b w-1/2'></div>
             <p className='text-center font-medium text-xl'>or</p>
@@ -147,7 +129,7 @@ const Login = () => {
           </button>
           <div className='flex gap-1 items-center justify-center my-3'>
             <p>Don’t have account? Sign Up </p>
-            <Link to="/sign-up" className="text-indigo-600 hover:text-indigo-800 hover:underline font-medium ml-2">Sign Up</Link>
+            <Link to="/sign-up" className="text-blue-600 hover:text-blue-700 hover:underline font-medium ml-2">Sign Up</Link>
           </div>
           <p>By continuing, you agree to our <span className='
                     text-blue-600 font-medium'>Terms</span>  of <span className='text-blue-600 font-medium'>Service</span> and <span className='text-blue-600 font-medium'>Privacy Policy</span></p>

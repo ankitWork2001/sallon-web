@@ -43,6 +43,10 @@ import SuperAdminProtectRoute from '../page/authenction/SuperAdminProtectRoute'
 import Specialists from '../page/detailspage/detailsLayout/Specialists'
 import RoleRegister from '../page/authenction/RoleRegister'
 import IndependentAdmin from '../page/authenction/IndependentAdmin'
+import ForgotPassword from '../page/authenction/ForgotPassword'
+import OtpVerify from '../page/authenction/OtpVerify'
+import ResetPassword from '../page/authenction/ResetPassword'
+import SuperAdminCityAndState from '../page/superAdmin/SuperAdminCityAndState'
 
 const AllRoute = () => {
   return (
@@ -74,6 +78,9 @@ const AllRoute = () => {
           <Route path='/not-authorized' element={<NotAuthorized />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/forgot' element={<ForgotPassword />} />
+          <Route path='/otp-verify' element={<OtpVerify />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
           <Route path='/profile' element={<ProfileAdmin />} />
           <Route path='/profile/edit' element={<CreateAccount />} />
           <Route path='/earn-with-us' element={<EarnWith />} />
@@ -104,6 +111,7 @@ const AllRoute = () => {
           <Route path='/superadmin/managesalon' element={<SuperAdminManageSalon/>}/>
           <Route path='/superadmin/manageuser' element={<SuperAdminManageUser/>}/>
           <Route path='/superadmin/managecategory' element={<SuperAdminManageCategory/>}/>
+          <Route path='/superadmin/managestate-and-city' element={<SuperAdminCityAndState/>}/>
           <Route path='/superadmin/:id' element={<SuperAdminDetails/>}/>
           <Route path='/superadmin/profile' element={<SuperAdminProfile/>}/>
         </Route>

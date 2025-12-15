@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 const SuperAdminSideBar = () => {
   return (
     <div>
-      <aside className="hidden lg:block md:block lg:col-span-3 bg-white rounded-xl p-3 shadow-sm w-50">
+      <aside className="hidden lg:block md:block lg:col-span-3 bg-white rounded-xl p-3 shadow-sm w-60">
         <nav className="space-y-3">
           <NavLink to="/superadmin/dashboard" className={({ isActive }) =>
             isActive
@@ -28,11 +28,11 @@ const SuperAdminSideBar = () => {
               : "font-medium flex items-center gap-2 px-4 py-2 hover:bg-pink-50"
           }> Manage User </NavLink>
 
-          <NavLink to="/superadmin/booking" className={({ isActive }) =>
+          <NavLink to="/superadmin/managestate-and-city" className={({ isActive }) =>
             isActive
               ? "bg-pink-50 text-[var(--primary)] px-4 py-2 rounded-lg font-medium flex items-center gap-2"
               : "font-medium flex items-center gap-2 px-4 py-2"
-          }><LuCalendar className="w-4 h-4" /> Bookings</NavLink>
+          }>Manage City and State</NavLink>
           <a className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50"><LuChartNoAxesColumnIncreasing className="w-4 h-4" /> Analytics</a>
           <NavLink to="/superadmin/profile" className={({ isActive }) =>
             isActive

@@ -11,7 +11,7 @@ import TextType from './TextType';
 
 const HomeSection1 = () => {
   useEffect(() => {
-    AOS.init({ duration: 2000, once: true });
+    AOS.init({ duration: 3000, once: true,delay:500, });
   }, []);
 
   const data = [
@@ -34,7 +34,7 @@ const HomeSection1 = () => {
   ]
   return (
     <div >
-
+{/* 
       <div data-aos="fade-down">
         <div className="w-full relative ">
 
@@ -92,9 +92,9 @@ const HomeSection1 = () => {
 
 
         </div>
-      </div>
+      </div> */}
 
-      <div className='flex justify-center'>
+      <div className='flex justify-center mt-4'>
         <div className='w-4xl'>
           <h1 className='text-center text-purple-600 text-3xl font-bold'>
             <TextType

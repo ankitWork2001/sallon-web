@@ -8,9 +8,11 @@ const SuperAdminManageSalon = () => {
   const [pageNumber, setPageNumber] = useState(1)
   const [totalPages, setTotalPages] = useState(1);
   const dispatch = useDispatch()
+    const token = localStorage.getItem('authtoken')
+
 
   const handlegetData = () => {
-    dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/getAllSaloons?page=${pageNumber}&limit=10`, key: "allSalon", token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MDA5ZGRhYjVkZWZkY2YzMjUyNzUxNiIsInJvbGUiOiJzdXBlcl9hZG1pbiIsImlhdCI6MTc2NDI1NjIzNiwiZXhwIjoxNzY0ODYxMDM2fQ.YoRAhLqpPp4eY6kNzKdX1BWBdR7h2LGPyREjti61CRE' }))
+    dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/getAllSaloons?page=${pageNumber}&limit=10`, key: "allSalon", token: token }))
   }
 
   const { data, loading, error } = useSelector((state) => state.salons)
@@ -30,7 +32,7 @@ const SuperAdminManageSalon = () => {
         {loading && Array.from({ length: 8 }).map((_, item) =>
           <CardLoader />)}
 
-        {data.allSalon?.saloons.map((item) => (
+        {data.allSalon?.saloons?.map((item) => (
           <Link to={`/superadmin/${item._id}`} state={{ salon: item }}
             key={item._id} >
 
