@@ -1,6 +1,9 @@
 import React from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 const MapAndLocation = () => {
+   const {data} = useOutletContext()
+  console.log(data)
   return (
     <div className='p-2'>
       <p className='font-medium text-2xl mt-3'>Location & Contact</p>

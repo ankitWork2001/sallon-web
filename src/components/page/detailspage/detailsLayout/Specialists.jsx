@@ -1,8 +1,10 @@
 import React from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 
 const Specialists = () => {
-
+ const {data} = useOutletContext()
+  console.log(data)
     return (
         <div>
             hello

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useOutletContext } from 'react-router-dom';
 
 const ReviewDetails = () => {
+     const {data} = useOutletContext()
+  console.log(data)
     const reviews = [
         {
             name: 'Jennifer S.',

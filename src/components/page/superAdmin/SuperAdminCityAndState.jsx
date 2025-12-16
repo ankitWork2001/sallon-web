@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getdata } from '../../../redux/superAdmin/SuperAdmin'
+import { CiCircleRemove } from "react-icons/ci";
 
 const SuperAdminCityAndState = () => {
   const [openState, setOpenState] = useState(false)
@@ -179,112 +180,147 @@ const SuperAdminCityAndState = () => {
         ))}
       </div>
 
-      {openState && <div className=" flex items-center justify-center z-10 shadow-md  absolute top-30 lg:left-[25%] md:right-22 md:w-110 sm:w-100 sm:right-25 right-[14%]">
-        <form onSubmit={handleAddState} className="bg-white p-6 rounded-lg shadow-md w-full ">
+    {openState && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    
+    {/* Modal */}
+    <div className="relative w-[90%] sm:w-[420px] bg-white rounded-lg shadow-xl">
 
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 text-center">
-            State Form
-          </h2>
+      {/* Close Button */}
+      <button
+        onClick={() => setOpenState(false)}
+        className="absolute top-3 right-3 text-2xl text-red-500 cursor-pointer"
+      >
+        <CiCircleRemove />
+      </button>
 
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              placeholder="Enter your state name"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md
-        focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+      {/* Form */}
+      <form
+        onSubmit={handleAddState}
+        className="p-6"
+      >
+        <h2 className="text-xl font-semibold text-gray-700 mb-4 text-center">
+          State Form
+        </h2>
 
-          <button
-            onClick={handleAddState}
-            type="submit"
-            style={{ background: "var(--primary-gradient)" }}
-            className="w-full  py-2 rounded-md
-        font-medium cursor-pointer"
-          >
-            Save State
-          </button>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Name
+          </label>
+          <input
+            type="text"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            placeholder="Enter your state name"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md
+            focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        </form>
-      </div>}
-
-
-      {openCity && <div className="flex items-center justify-center z-10 shadow-md  absolute top-30 lg:left-[25%] md:right-24 md:w-110 sm:w-100 sm:right-30 right-[14%]">
-        <form
-          onSubmit={handleAddCityes}
-          className="bg-white p-6 rounded-lg shadow-md w-full"
+        <button
+          type="submit"
+          style={{ background: "var(--primary-gradient)" }}
+          className="w-full py-2 rounded-md text-white font-medium hover:opacity-90 transition"
         >
-          <h2 className="text-xl font-semibold text-gray-700 mb-4 text-center">
-            Add City
-          </h2>
-
-          {/* City Name */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              City Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter city name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          {/* State */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              State
-            </label>
-            <select
-              name="state"
-              value={formData.state}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select State</option>
-              {data?.allState?.states?.map((state, index) => (
-                <option key={index} value={state?._id}>{state?.name}</option>
-              ))}
-            </select>
-          </div>
+          Save State
+        </button>
+      </form>
+    </div>
+  </div>
+)}
 
 
-          {/* Pincode */}
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600 mb-1">
-              Pincode
-            </label>
-            <input
-              type="text"
-              name="pincode"
-              placeholder="Enter pincode"
-              value={formData.pincode}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
 
-          {/* Submit */}
-          <button
-            onClick={handleAddCityes}
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+     {openCity && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    
+    {/* Modal Box */}
+    <div className="relative w-[92%] sm:w-[450px] bg-white rounded-lg shadow-xl">
+
+      {/* Close Button */}
+      <button
+        onClick={() => setOpenCity(false)}
+        className="absolute top-3 right-3 text-2xl text-red-500 cursor-pointer"
+      >
+        <CiCircleRemove />
+      </button>
+
+      {/* Form */}
+      <form
+        onSubmit={handleAddCityes}
+        className="p-6"
+      >
+        <h2 className="text-xl font-semibold text-gray-700 mb-4 text-center">
+          Add City
+        </h2>
+
+        {/* City Name */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            City Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter city name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 border border-gray-300 rounded-md
+            focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* State */}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            State
+          </label>
+          <select
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 border border-gray-300 rounded-md
+            focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            Save City
-          </button>
-        </form>
-      </div>}
+            <option value="">Select State</option>
+            {data?.allState?.states?.map((state, index) => (
+              <option key={state?._id || index} value={state?._id}>
+                {state?.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
+        {/* Pincode */}
+        <div className="mb-5">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Pincode
+          </label>
+          <input
+            type="text"
+            name="pincode"
+            placeholder="Enter pincode"
+            value={formData.pincode}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md
+            focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded-md
+          font-medium hover:bg-blue-700 transition"
+        >
+          Save City
+        </button>
+      </form>
+    </div>
+  </div>
+)}
     </div>
   )
 }

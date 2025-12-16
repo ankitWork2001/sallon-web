@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 // import { FaMapMarkerAlt, FaStar, FaRupeeSign, FaClock } from "react-icons/fa";
 // import { SlCursor } from "react-icons/sl";
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
-// import popularNearMe from '../../data';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSalondata } from '../../../redux/userSlice/homeSalon';
 
@@ -10,10 +9,6 @@ const HomeProductDetails = () => {
   const { id } = useParams();
 
   const token = localStorage.getItem("authtoken")
-
-
-  // const datas = popularNearMe.filter((item) => item.id === parseInt(id));
-
 
   const dispatch = useDispatch()
 
@@ -69,35 +64,6 @@ console.log(data)
               </p>
             </div>
 
-            {/* Services List */}
-            {/* <div className="mt-3 text-sm text-gray-700 space-y-1">
-              <div className="flex justify-between">
-                <span>{item.category1.service}</span>
-                <span className="flex items-center font-medium">
-                  <FaRupeeSign className="text-xs mr-1" /> {item.category1.price}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span>{item.category2.service}</span>
-                <span className="flex items-center font-medium">
-                  <FaRupeeSign className="text-xs mr-1" /> {item.category2.price}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span>{item.category3.service}</span>
-                <span className="flex items-center font-medium">
-                  <FaRupeeSign className="text-xs mr-1" /> {item.category3.price}
-                </span>
-              </div>
-            </div> */}
-
-            {/* Duration */}
-            {/* <div className="flex justify-between items-center mt-3 text-sm text-gray-600">
-              <span className="flex items-center gap-1">
-                <FaClock /> {item.duration}
-              </span>
-
-            </div> */}
           </div>
         {/* ))} */}
 
@@ -146,14 +112,12 @@ console.log(data)
           </div>
         </div>
         <div>
-          <Outlet />
+          <Outlet context={{data}} />
         </div>
 
+        
+
       </div>
-
-      {/* ROUTES SHOULD BE OUTSIDE THE CARD */}
-
-
     </div>
   )
 

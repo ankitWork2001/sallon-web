@@ -12,6 +12,8 @@ const SuperAdminManageCategory = () => {
   const [id, setId] = useState('')
   const [addbutton, setAddbutton] = useState(false)
   const [gender, setGender] = useState('men')
+
+  const [filterGender,setFilterGender] = useState("men")
   
 
   const token = localStorage.getItem('authtoken')
@@ -19,7 +21,7 @@ const SuperAdminManageCategory = () => {
   const { data, loading, error } = useSelector((state) => state.salons)
   console.log(data)
   const handlegetData = () => {
-    dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/getAllCategories`, key: "saloncategory", token: token }))
+    dispatch(getdata({ url: `${import.meta.env.VITE_API_URL}super-admin/getAllCategories?gender=${filterGender}`, key: "saloncategory", token: token }))
   }
 
   const handleAddData = (e) => {
@@ -96,9 +98,37 @@ const SuperAdminManageCategory = () => {
 
   useEffect(() => {
     handlegetData()
-  }, [dispatch])
+  }, [dispatch,filterGender])
+
+    const ButtonStyle = (btnCat) => ({
+    background:
+      filterGender === btnCat ? "#d6aeb0" : "",
+    color: filterGender === btnCat ? "white" : "black",
+    transition: "0.3s",
+  });
   return (
     <div className='p-2 mt-2 relative'>
+      <div>
+          <div className="flex gap-1 items-center font-medium p-2 mt-3 rounded-4xl bg-[#f7eded] md:w-80 sm:w-70 w-60 text-xs md:text-sm">
+          <button
+            onClick={() => setFilterGender("men")}
+            className="md:px-4 md:p-2 p-1 px-2 rounded-3xl flex items-center gap-3"
+            style={ButtonStyle("men")}
+          >
+            <img className="w-7" src="https://cdn-icons-png.flaticon.com/128/3667/3667832.png" alt="" />
+            Men Salon
+          </button>
+
+          <button
+            onClick={() => setFilterGender("women")}
+            className="md:px-4 md:p-2 p-1 px-2 rounded-3xl flex items-center gap-3"
+            style={ButtonStyle("women")}
+          >
+            <img className="w-7" src="https://cdn-icons-png.flaticon.com/128/5498/5498588.png" alt="" />
+            Women Salon
+          </button>
+        </div>
+      </div>
       <div className='flex justify-end p-2'>
         <button style={{ background: "var(--primary-gradient)" }} className='px-4 p-2 font-medium text-white  rounded-lg cursor-pointer' onClick={() => { setAddbutton(true), setAddform(true) }}>+ Add Category</button>
       </div>
