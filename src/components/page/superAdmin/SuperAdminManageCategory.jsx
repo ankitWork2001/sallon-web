@@ -133,8 +133,8 @@ const SuperAdminManageCategory = () => {
         <button style={{ background: "var(--primary-gradient)" }} className='px-4 p-2 font-medium text-white  rounded-lg cursor-pointer' onClick={() => { setAddbutton(true), setAddform(true) }}>+ Add Category</button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-4">
-        {loading && Array.from({ length: 6 }).map((_, item) =>
-          <CardLoader />)}
+        {loading && Array.from({ length: 6 }).map((_, index) =>
+          <CardLoader index={index} />)}
         {error && <p>{error}</p>}
         {data.saloncategory?.categories?.map((service) => (
           <div

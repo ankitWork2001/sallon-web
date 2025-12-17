@@ -4,7 +4,6 @@ const OtpVerify = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const inputsRef = useRef([]);
 
-  // Handle input change
   const handleChange = (e, index) => {
     const value = e.target.value;
 

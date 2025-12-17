@@ -1,12 +1,16 @@
 import React, { useEffect, memo, useState } from "react";
 import { FaStar, FaRupeeSign, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { RiColorFilterAiLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { getSalondata } from "../../../redux/userSlice/homeSalon";
 
 const HomeSection3 = () => {
   const [priceRange, setPriceRange] = useState(2000);
   const [categories, setCategories] = useState('');
   const [selectedGender, setSelectedGender] = useState("men");
-  const [open,setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
 
   const salon = [
@@ -72,28 +76,36 @@ const HomeSection3 = () => {
     },
   ];
 
+  const token = localStorage.getItem("authtoken")
+
+  const getData = () => {
+
+    dispatch(getSalondata({
+      url: `${import.meta.env.VITE_API_URL}user/get-all-categories?gender=${selectedGender}`,
+      key: 'category',
+      token: token
+    }))
+  }
 
   useEffect(() => {
-    fetch(`https://saloonbackend-mumt.onrender.com/api/user/get-all-categories?gender=${selectedGender}`)
-      .then(res => res.json())
-      .then((data) => {
-        setCategories(data)
-      })
-      .catch((err) => console.log(err))
-  }, [selectedGender])
+    getData();
+  }, [selectedGender]);
+
+  const { data, loading, error } = useSelector((state) => state.homeSalon);
+
   return (
     <div className="p-6">
       <div>
         <p className='font-bold text-2xl'>Top Rated Salons</p>
       </div>
 
-    
-      <button onClick={()=>setOpen(true)} className="px-4 md:hidden mt-3 m-2 bg-gray-100 rounded font-medium flex items-center gap-2">Filter <RiColorFilterAiLine />
-</button>
+
+      <button onClick={() => setOpen(true)} className="px-4 md:hidden mt-3 m-2 bg-gray-100 rounded font-medium flex items-center gap-2">Filter <RiColorFilterAiLine />
+      </button>
       <div className="flex bg-gray-50 md:h-190 ">
 
-        {open&& <div className={`w-1/3 bg-white absolute  rounded-2xl p-5 shadow-sm md:hidden md:overflow-y-scroll  scrollbar-hideen   transition-all ease-in  ${open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
-                <div className='flex justify-end p-2'><p onClick={()=>setOpen(false)} className='text-red-500 text-xl'>X</p></div>
+        {open && <div className={`w-1/3 bg-white absolute  rounded-2xl p-5 shadow-sm md:hidden md:overflow-y-scroll  scrollbar-hideen   transition-all ease-in  ${open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
+          <div className='flex justify-end p-2'><p onClick={() => setOpen(false)} className='text-red-500 text-xl'>X</p></div>
 
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold">Filters</h2>
@@ -137,7 +149,17 @@ const HomeSection3 = () => {
                 Women
               </label>
             </div>
-            {categories && categories.categories.map(
+           {error && <p>{error}</p>}
+            {loading &&
+              [1, 2, 3, 4].map((item) => (
+                <div
+                  key={item}
+                  className="w-full h-3 bg-gray-200 rounded overflow-hidden mt-3"
+                >
+                  <div className="h-full w-full bg-gray-300 animate-pulse"></div>
+                </div>
+              ))}
+            {!loading && data?.category?.categories?.map(
               (service) => (
                 <div key={service._id} className="flex items-center gap-2 mb-2">
                   <input type="checkbox" id={service._id} />
@@ -179,6 +201,7 @@ const HomeSection3 = () => {
         </div>}
         {/* Left Sidebar */}
         <div className="w-1/4 bg-white  rounded-2xl p-5 shadow-sm hidden md:block md:overflow-y-scroll  scrollbar-hideen">
+        
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold">Filters</h2>
             <button className="text-sm text-gray-500 hover:text-indigo-600">
@@ -221,7 +244,17 @@ const HomeSection3 = () => {
                 Women
               </label>
             </div>
-            {categories && categories.categories.map(
+            {error && <p>{error}</p>}
+            {loading &&
+              [1, 2, 3, 4].map((item) => (
+                <div
+                  key={item}
+                  className="w-full h-3 bg-gray-200 rounded overflow-hidden mt-3"
+                >
+                  <div className="h-full w-full bg-gray-300 animate-pulse"></div>
+                </div>
+              ))}
+            {!loading && data?.category?.categories?.map(
               (service) => (
                 <div key={service._id} className="flex items-center gap-2 mb-2">
                   <input type="checkbox" id={service._id} />

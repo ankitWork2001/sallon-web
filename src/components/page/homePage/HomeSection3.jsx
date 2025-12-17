@@ -14,7 +14,7 @@ const HomeSection3 = () => {
   const navigate = useNavigate();
 
 
- useEffect(() => {
+  useEffect(() => {
     AOS.init({ duration: 2000, once: true });
   }, []);
 
@@ -40,7 +40,7 @@ const HomeSection3 = () => {
   }, [category]);
 
   const { data, loading, error } = useSelector((state) => state.homeSalon);
-  console.log(data)
+
   const ButtonStyle = (btnCat) => ({
     background:
       category === btnCat ? "#d6aeb0" : "",
@@ -83,27 +83,27 @@ const HomeSection3 = () => {
   return (
     <div className="p-6 mt-3 ">
       <div>
-      <div>
+        <div>
           <div className="flex gap-1 items-center font-medium p-2 mt-3 rounded-4xl bg-[#f7eded] md:w-90 sm:w-70 w-60 text-xs md:text-sm">
-          <button
-            onClick={() => setCategory("men")}
-            className="md:px-4 md:p-2 p-1 px-2 rounded-3xl flex items-center gap-3"
-            style={ButtonStyle("men")}
-          >
-            <img className="w-7" src="https://cdn-icons-png.flaticon.com/128/3667/3667832.png" alt="" />
-            Men Salon
-          </button>
+            <button
+              onClick={() => setCategory("men")}
+              className="md:px-4 md:p-2 p-1 px-2 rounded-3xl flex items-center gap-3"
+              style={ButtonStyle("men")}
+            >
+              <img className="w-7" src="https://cdn-icons-png.flaticon.com/128/3667/3667832.png" alt="" />
+              Men Salon
+            </button>
 
-          <button
-            onClick={() => setCategory("women")}
-            className="md:px-4 md:p-2 p-1 px-2 rounded-3xl flex items-center gap-3"
-            style={ButtonStyle("women")}
-          >
-            <img className="w-7" src="https://cdn-icons-png.flaticon.com/128/5498/5498588.png" alt="" />
-            Women Salon
-          </button>
+            <button
+              onClick={() => setCategory("women")}
+              className="md:px-4 md:p-2 p-1 px-2 rounded-3xl flex items-center gap-3"
+              style={ButtonStyle("women")}
+            >
+              <img className="w-7" src="https://cdn-icons-png.flaticon.com/128/5498/5498588.png" alt="" />
+              Women Salon
+            </button>
+          </div>
         </div>
-      </div>
 
         <div >
           <HomeSection23 category={category} />
@@ -118,9 +118,9 @@ const HomeSection3 = () => {
         <div data-aos="fade-right" className="grid md:grid-cols-3 gap-4 lg:grid-cols-4 mt-3">
 
           {loading &&
-            Array.from({ length: 4 }).map((_, i) => (
+            Array.from({ length: 4 }).map((_, index) => (
 
-              <CardLoader />
+              <CardLoader index={index} />
             ))}
 
           {/* ---- Actual Data Cards ---- */}
@@ -147,14 +147,14 @@ const HomeSection3 = () => {
 
                   <div className="flex flex-wrap gap-2 mb-3 items-center">
                     <span className="font-semibold ">Categories:</span>
-                    { item?.categories.length>1 ? item?.categories.map((srv, i) => (
+                    {item?.categories.length > 1 ? item?.categories.map((srv, i) => (
                       <span
                         key={i}
                         className="bg-green-100 text-sm rounded-2xl px-2 py-0.5"
                       >
                         {srv.name}
                       </span>
-                    )):<p className="text-sm">no categories found</p>}
+                    )) : <p className="text-sm">no categories found</p>}
                   </div>
                   <div>
 

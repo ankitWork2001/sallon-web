@@ -29,8 +29,8 @@ const SuperAdminManageSalon = () => {
   return (
     <div className='p-2 mt-2'>
       <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-        {loading && Array.from({ length: 8 }).map((_, item) =>
-          <CardLoader />)}
+        {loading && Array.from({ length: 8 }).map((_, index) =>
+          <CardLoader  index={index}/>)}
 
         {data.allSalon?.saloons?.map((item) => (
           <Link to={`/superadmin/${item._id}`} state={{ salon: item }}

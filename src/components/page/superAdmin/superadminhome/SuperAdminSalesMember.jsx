@@ -129,15 +129,15 @@ const SuperAdminSalesMember = () => {
 
               </thead>
               <tbody >
-                {loading && Array.from({ length: 5 }).map((item) =>
-                  <tr>
-                    <td colspan="8" class="p-4">
-                      <div class="h-6 w-full rounded bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse"></div>
+                {loading && Array.from({ length: 5 }).map((_,item) =>
+                  <tr key={item}>
+                    <td colSpan={8} className="p-4">
+                      <div className="h-6 w-full rounded bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse"></div>
                     </td>
                   </tr>
                 )}
-                {data?.salesmember?.salesmen?.map((item) =>
-                  <tr className='border-b border-gray-400 '>
+                {data?.salesmember?.salesmen?.map((item,index) =>
+                  <tr className='border-b border-gray-400 ' key={index }>
                     <td className='md:p-4 p-2 text-[#9333EA] font-medium'>{item.referralId}</td>
                     <td className='md:p-4 p-2 font-semibold'>{item.user.name} </td>
                     <td className='md:p-4 p-2 text-gray-700'>{item.user.phone}</td>
