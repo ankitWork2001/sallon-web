@@ -192,7 +192,7 @@ const IndependentAdmin = () => {
                   id="contactNumber" name="phone"
                   value={indenpendForm.phone}
                   onChange={handleChange}
-                  type="tel" placeholder="Enter contact number" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-600 focus:ring-pink-600 sm:text-sm outline-none h-10 p-3" />
+                  type="number"  placeholder="Enter contact number" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-600 focus:ring-pink-600 sm:text-sm outline-none h-10 p-3" />
               </div>
 
               <div>

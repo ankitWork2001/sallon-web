@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { FiEdit2, FiTrash2, FiClock } from "react-icons/fi";
 import { BeatLoader } from 'react-spinners';
 import { getDataAdmin } from '../../../redux/adminSlice/adminSlice';
 import { useDispatch, useSelector } from "react-redux"
+import CardLoader from '../homePage/CardLoader';
 
 const AdminService = () => {
   const [serviceItems, setServiceItems] = useState('');
@@ -12,7 +13,7 @@ const AdminService = () => {
   const [updateForm, setUpdateForm] = useState({});
   const dispatch = useDispatch()
   const token = localStorage.getItem("authtoken");
-  const [category,setCategory] = useState('')
+  const [category, setCategory] = useState('')
 
 
   // get data for redux
@@ -20,19 +21,19 @@ const AdminService = () => {
     dispatch(getDataAdmin({ url: `${import.meta.env.VITE_API_URL}salon-admin/get-service-items`, key: 'service', token: token }))
   }
 
-//    const handlegetcategory = () => {
+  //    const handlegetcategory = () => {
 
-    
-//      fetch(`${import.meta.env.VITE_API_URL}super-admin/getAllCategories`,)
-//      .then((res)=>res.json())
-//      .then((data)=>{
-//       setCategory(data)
-//       console.log(data)
-//    })
-//      .then((err)=>{
-// console.log(err)
-//      })
-//     }
+
+  //      fetch(`${import.meta.env.VITE_API_URL}super-admin/getAllCategories`,)
+  //      .then((res)=>res.json())
+  //      .then((data)=>{
+  //       setCategory(data)
+  //       console.log(data)
+  //    })
+  //      .then((err)=>{
+  // console.log(err)
+  //      })
+  //     }
 
 
   useEffect(() => {
@@ -40,11 +41,11 @@ const AdminService = () => {
     // handlegetcategory()
 
   }, [])
-  
 
 
-   const { data, loading, error } = useSelector((state) => state.admin)
-  
+
+  const { data, loading, error } = useSelector((state) => state.admin)
+
   const [form, setForm] = useState({
     name: "",
     category: "",
@@ -56,7 +57,7 @@ const AdminService = () => {
     status: "active",
     providerType: "salon",
     // providerId: "",
-    gender : 'men'
+    gender: 'men'
   });
 
   const handleChange = (e) => {
@@ -68,7 +69,7 @@ const AdminService = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.name === "" || form.category === "" || form.price === "" || form.providerId === "" || form.description === ""  || form.image === "") {
+    if (form.name === "" || form.category === "" || form.price === "" || form.providerId === "" || form.description === "" || form.image === "") {
       alert("Please fill all  fields!");
       return;
     }
@@ -88,7 +89,7 @@ const AdminService = () => {
         "status": form.status,
         "providerType": form.providerType,
         // "providerId": form.providerId,
-        'gender' : form.gender
+        'gender': form.gender
       });
 
       const requestOptions = {
@@ -127,7 +128,7 @@ const AdminService = () => {
           form.status = "active";
           form.providerType = "salon";
           form.providerId = "";
-                      form.gender = ''
+          form.gender = ''
 
           setFormOpen(false);
           console.log(result)
@@ -238,11 +239,13 @@ const AdminService = () => {
             </button>
           </div>
 
-          {loading && <div className="flex justify-center items-center h-64"><BeatLoader size={20} /></div>}
+
 
 
           {/* Service Cards */}
           <div className="grid md:grid-cols-2 gap-6 bg-gray-50">
+            {loading && Array.from({ length: 2 }).map((_, index) =>
+              <CardLoader key={index} />)}
             {data?.service?.services?.map((service, index) => (
               <div
                 key={index}
@@ -367,20 +370,20 @@ const AdminService = () => {
           <div>
 
 
-             <div className='mb-4'>
-            <label className="block mb-1 font-medium">Gender</label>
-            <select
-              value={form.gender}
-              onChange={handleChange}
-              className="w-full border p-2 rounded cursor-pointer "
-              required
-            >
-              <option  value="men">Men</option>
-              <option value="women">Women</option>
-              <option value="unisex">Unisex</option>
-            </select>
-        </div>
-          
+            <div className='mb-4'>
+              <label className="block mb-1 font-medium">Gender</label>
+              <select
+                value={form.gender}
+                onChange={handleChange}
+                className="w-full border p-2 rounded cursor-pointer "
+                required
+              >
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="unisex">Unisex</option>
+              </select>
+            </div>
+
 
             {/* Image URL */}
             <div className="mb-4">
@@ -436,7 +439,7 @@ const AdminService = () => {
 
           </div>
         </div>
-       
+
         <button
           type="submit"
           className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
@@ -607,4 +610,4 @@ const AdminService = () => {
   )
 }
 
-export default AdminService
+export default memo(AdminService)

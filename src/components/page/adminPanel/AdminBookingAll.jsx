@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { FaUser, FaPhoneAlt, FaCalendarAlt, FaClock } from "react-icons/fa";
 
 
@@ -130,4 +130,4 @@ const [data,SetData] = useState("all")
   );
 }
 
-export default AdminBooking;
+export default  memo(AdminBooking);

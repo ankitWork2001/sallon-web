@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FaArrowLeft } from "react-icons/fa";
 import { IoIosQrScanner } from "react-icons/io";
 const AdminAiHairStyle = () => {
@@ -45,4 +45,4 @@ const AdminAiHairStyle = () => {
     )
 }
 
-export default AdminAiHairStyle
+export default memo(AdminAiHairStyle)

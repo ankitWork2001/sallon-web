@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 // import { FaMapMarkerAlt, FaStar, FaRupeeSign, FaClock } from "react-icons/fa";
 // import { SlCursor } from "react-icons/sl";
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
@@ -123,4 +123,4 @@ console.log(data)
 
 }
 
-export default HomeProductDetails
+export default memo(HomeProductDetails)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useLocation, useParams } from "react-router-dom";
 const SuperAdminDetails = () => {
     const { state } = useLocation();
@@ -22,4 +22,4 @@ const SuperAdminDetails = () => {
     )
 }
 
-export default SuperAdminDetails
+export default memo(SuperAdminDetails) 

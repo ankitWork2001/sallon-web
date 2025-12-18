@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 const MapAndLocation = () => {
@@ -22,4 +22,4 @@ const MapAndLocation = () => {
   )
 }
 
-export default MapAndLocation
+export default memo(MapAndLocation)

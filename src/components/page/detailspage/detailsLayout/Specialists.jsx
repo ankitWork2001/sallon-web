@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 
@@ -12,4 +12,4 @@ const Specialists = () => {
     )
 }
 
-export default Specialists
+export default memo(Specialists)

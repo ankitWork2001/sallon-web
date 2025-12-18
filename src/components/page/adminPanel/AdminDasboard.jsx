@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { SlCalender } from "react-icons/sl";
 import { FiDollarSign } from "react-icons/fi";
 import { FaUsers } from "react-icons/fa";
@@ -100,4 +100,4 @@ const AdminDasboard = () => {
   )
 }
 
-export default AdminDasboard
+export default memo(AdminDasboard)

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { FiGlobe, FiClock } from "react-icons/fi";
 import { BsFillCameraFill } from "react-icons/bs";
 
@@ -108,4 +108,4 @@ const AdminProfile = () => {
   )
 }
 
-export default AdminProfile
+export default memo(AdminProfile)

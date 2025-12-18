@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
-import { BeatLoader } from "react-spinners";
 import { CiCircleRemove } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { getDataAdmin } from '../../../redux/adminSlice/adminSlice';
+import CardLoader from '../homePage/CardLoader';
 
 
 const AdminSpecialist = () => {
@@ -89,7 +89,7 @@ const AdminSpecialist = () => {
     // SUBMIT FORM
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if ( !form.name || !form.contactNumber) {
+        if (!form.name || !form.contactNumber) {
             alert("Please fill all required fields: Salon ID, Name, Contact Number");
             setspecialForm(false);
             return;
@@ -187,9 +187,9 @@ const AdminSpecialist = () => {
                 </button>
             </div>
 
-            {loading && <div className="flex justify-center items-center h-64"><BeatLoader size={20} /></div>}
-
             <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {loading && Array.from({ length: 3 }).map((_, index) =>
+                    <CardLoader key={index} />)}
                 {data &&
                     data?.speciallist?.specialists?.map((item) => (
                         <div
@@ -286,7 +286,7 @@ const AdminSpecialist = () => {
                     <h2 className="text-2xl font-bold mb-4 text-[var(--primary)]">Add Specialist</h2>
                     <p>  <CiCircleRemove className="cursor-pointer text-3xl text-red-700 font-medium" onClick={() => setspecialForm(false)} /></p>
                 </div>
-               
+
 
                 {/* NAME */}
                 <input
@@ -412,7 +412,7 @@ const AdminSpecialist = () => {
                         <h2 className="text-2xl font-bold ">Update Specialist</h2>
                         <CiCircleRemove className="cursor-pointer text-3xl text-red-700 font-medium" onClick={() => setUpdateForm(false)} />
                     </div>
-                   
+
 
                     <input
                         type="text"
@@ -531,4 +531,4 @@ const AdminSpecialist = () => {
     )
 }
 
-export default AdminSpecialist
+export default memo(AdminSpecialist)

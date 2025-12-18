@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FiGlobe } from 'react-icons/fi'
 import { BsFillCameraFill } from "react-icons/bs";
 
@@ -46,4 +46,4 @@ const SuperAdminProfile = () => {
   )
 }
 
-export default SuperAdminProfile
+export default memo(SuperAdminProfile)

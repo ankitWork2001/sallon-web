@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import {
   LuCalendar,
   LuUser,
@@ -148,4 +148,4 @@ const AdminSideBar = () => {
   )
 }
 
-export default AdminSideBar
+export default memo(AdminSideBar)

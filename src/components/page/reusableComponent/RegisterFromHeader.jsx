@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FaCheck, FaRegUserCircle } from 'react-icons/fa'
 import { FaCartShopping } from 'react-icons/fa6'
 import { MdVerifiedUser } from 'react-icons/md'
@@ -49,4 +49,4 @@ const RegisterFromHeader = (props) => {
     )
 }
 
-export default RegisterFromHeader
+export default memo(RegisterFromHeader)

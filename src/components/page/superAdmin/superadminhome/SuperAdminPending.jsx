@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const SuperAdminPending = () => {
     return (
@@ -38,4 +38,4 @@ const SuperAdminPending = () => {
     )
 }
 
-export default SuperAdminPending
+export default memo(SuperAdminPending)

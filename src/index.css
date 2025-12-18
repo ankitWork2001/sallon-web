@@ -26,6 +26,11 @@
   --foter-gradient: linear-gradient(90deg, #320E51, #5D0AA8)
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /* linear-gradient(90deg, #9333EA, #EC4899, #F43F5E) */
 /* linear-gradient(90deg, #0F2027, #203A43, #2C5364) acha */

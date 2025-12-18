@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 const GalleryDetails = () => {
@@ -25,4 +25,4 @@ const GalleryDetails = () => {
   )
 }
 
-export default GalleryDetails
+export default memo(GalleryDetails)

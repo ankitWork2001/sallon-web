@@ -23,11 +23,8 @@ const HomeSection3 = () => {
   }
 
   const token = localStorage.getItem("authtoken")
-
-
-
+  
   const getData = () => {
-
     dispatch(getSalondata({
       url: `${import.meta.env.VITE_API_URL}user/get-home-salons?category=${category}`,
       key: 'salons',
@@ -118,16 +115,15 @@ const HomeSection3 = () => {
         <div data-aos="fade-right" className="grid md:grid-cols-3 gap-4 lg:grid-cols-4 mt-3">
 
           {loading &&
-            Array.from({ length: 4 }).map((_, index) => (
-
-              <CardLoader index={index} />
-            ))}
+            [1,2,3,4].map((_, index) => 
+              <CardLoader key={index} />
+            )}
 
           {/* ---- Actual Data Cards ---- */}
           {!loading &&
-            data?.salons?.data.map((item) => (
+            data?.salons?.data.map((item,index) => (
               <div onClick={() => handledetails(item._id)}
-                key={item.id}
+                key={index}
                 className="bg-white rounded-2xl shadow-sm hover:shadow-md  cursor-pointer transition-all mt-2"
               >
                 <div className="h-36 bg-gray-200 rounded-lg">

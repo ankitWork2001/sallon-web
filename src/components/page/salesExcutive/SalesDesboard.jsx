@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
     FaDollarSign,
     FaSignOutAlt,
@@ -182,4 +182,4 @@ const SalesDesboard = ()=>{
     );
 }
 
-export default SalesDesboard;
+export default memo(SalesDesboard);

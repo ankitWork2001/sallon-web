@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux"
 import { getdata } from '../../../redux/superAdmin/SuperAdmin';
@@ -134,7 +134,7 @@ const SuperAdminManageCategory = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-4">
         {loading && Array.from({ length: 6 }).map((_, index) =>
-          <CardLoader index={index} />)}
+          <CardLoader key={index} />)}
         {error && <p>{error}</p>}
         {data.saloncategory?.categories?.map((service) => (
           <div
@@ -261,4 +261,4 @@ const SuperAdminManageCategory = () => {
   )
 }
 
-export default SuperAdminManageCategory
+export default memo(SuperAdminManageCategory)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CardLoader from '../homePage/CardLoader';
 import { getdata } from '../../../redux/superAdmin/SuperAdmin';
@@ -30,7 +30,7 @@ const SuperAdminManageSalon = () => {
     <div className='p-2 mt-2'>
       <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {loading && Array.from({ length: 8 }).map((_, index) =>
-          <CardLoader  index={index}/>)}
+          <CardLoader  key={index}/>)}
 
         {data.allSalon?.saloons?.map((item) => (
           <Link to={`/superadmin/${item._id}`} state={{ salon: item }}
@@ -96,4 +96,4 @@ const SuperAdminManageSalon = () => {
   )
 }
 
-export default SuperAdminManageSalon
+export default memo(SuperAdminManageSalon)

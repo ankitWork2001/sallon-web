@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { BsGraphUpArrow } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -57,4 +57,4 @@ const SuperAdminHeader = () => {
   )
 }
 
-export default SuperAdminHeader
+export default memo(SuperAdminHeader)

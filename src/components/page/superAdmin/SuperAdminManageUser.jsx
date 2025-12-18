@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { getdata } from '../../../redux/superAdmin/SuperAdmin';
 import { FaUser, FaPhone, FaEnvelope, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
@@ -29,7 +29,7 @@ const SuperAdminManageUser = () => {
     <div className='p-2 mt-2'>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading && Array.from({ length: 8 }).map((_, index) =>
-          <CardLoader index={index} />)}
+          <CardLoader key={index} />)}
         {data.user?.users?.map((item) => (
           <div
             key={item._id}
@@ -95,4 +95,4 @@ const SuperAdminManageUser = () => {
   )
 }
 
-export default SuperAdminManageUser
+export default  memo(SuperAdminManageUser)

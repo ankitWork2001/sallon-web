@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { memo, use, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getdata } from '../../../../redux/superAdmin/SuperAdmin'
 
@@ -228,4 +228,4 @@ const SuperAdminSalesMember = () => {
   )
 }
 
-export default SuperAdminSalesMember
+export default memo(SuperAdminSalesMember)

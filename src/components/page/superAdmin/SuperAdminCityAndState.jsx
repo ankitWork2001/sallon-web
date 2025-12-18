@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getdata } from '../../../redux/superAdmin/SuperAdmin'
 import { CiCircleRemove } from "react-icons/ci";
@@ -337,4 +337,4 @@ const SuperAdminCityAndState = () => {
   )
 }
 
-export default SuperAdminCityAndState
+export default memo(SuperAdminCityAndState)

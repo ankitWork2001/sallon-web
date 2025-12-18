@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { LuCalendar, LuChartNoAxesColumnIncreasing, LuHouse, LuPalette, LuScan, LuSettings, LuUser } from 'react-icons/lu'
 import { NavLink } from 'react-router-dom'
 
@@ -51,4 +51,4 @@ const SuperAdminSideBar = () => {
   )
 }
 
-export default SuperAdminSideBar
+export default memo(SuperAdminSideBar)

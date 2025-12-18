@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FaCheck, FaRegUserCircle } from 'react-icons/fa'
 import { FaCartShopping } from 'react-icons/fa6'
 import { MdVerifiedUser } from 'react-icons/md'
@@ -50,4 +50,4 @@ const IndenpendtHeader = (props) => {
   )
 }
 
-export default IndenpendtHeader
+export default memo(IndenpendtHeader)

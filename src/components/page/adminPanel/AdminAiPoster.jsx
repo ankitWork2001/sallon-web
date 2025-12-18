@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FaArrowLeft } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 const AdminAiPoster = () => {
@@ -52,4 +52,4 @@ const AdminAiPoster = () => {
   )
 }
 
-export default AdminAiPoster
+export default memo(AdminAiPoster)

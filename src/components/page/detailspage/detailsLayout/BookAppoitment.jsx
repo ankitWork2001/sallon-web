@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FaClock, FaRupeeSign, FaCalendarAlt } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 const BookAppoitment = () => {
@@ -152,4 +152,4 @@ const BookAppoitment = () => {
   )
 }
 
-export default BookAppoitment
+export default memo(BookAppoitment)

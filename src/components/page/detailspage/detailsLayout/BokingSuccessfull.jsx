@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { FiCalendar } from "react-icons/fi";
 import { MdOutlineShare } from "react-icons/md";
 import { CiStar } from "react-icons/ci";
@@ -93,4 +93,4 @@ const BokingSuccessfull = () => {
   )
 }
 
-export default BokingSuccessfull
+export default memo(BokingSuccessfull)

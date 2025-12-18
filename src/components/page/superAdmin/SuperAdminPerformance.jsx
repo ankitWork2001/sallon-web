@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const SuperAdminPerformance = () => {
   return (
@@ -40,4 +40,4 @@ const SuperAdminPerformance = () => {
   )
 }
 
-export default SuperAdminPerformance
+export default memo(SuperAdminPerformance)

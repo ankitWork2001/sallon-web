@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useOutletContext } from 'react-router-dom';
 
 const ReviewDetails = () => {
@@ -46,4 +46,4 @@ const ReviewDetails = () => {
     )
 }
 
-export default ReviewDetails
+export default memo(ReviewDetails)

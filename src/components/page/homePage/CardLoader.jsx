@@ -1,9 +1,9 @@
 import React from 'react'
 import { memo } from 'react'
 
-const CardLoader = (props) => {
+const CardLoader = () => {
   return (
-    <div key={props.index}>
+    <div>
        <div  className="bg-white rounded-2xl shadow-sm p-4 animate-pulse"
             >
               <div className="h-36 bg-gray-300 rounded-lg mb-3"></div>

@@ -300,10 +300,13 @@ const HomeSection3 = () => {
           {salon.map((salon) => (
             <div
               key={salon.id}
-              className="bg-white rounded-2xl shadow-sm hover:shadow-md p-4 cursor-pointer transition-all"
+              className="bg-white rounded-2xl shadow-sm hover:shadow-md cursor-pointer transition-all"
             >
-              <div className="h-36 bg-gray-200 rounded-lg mb-3"></div>
-              <div className="flex justify-between items-center mb-1">
+              <div className="h-36 w-full overflow-hidden bg-gray-200 rounded-lg mb-3 ">
+                <img className="w-full h-full object-cover" src="https://img.freepik.com/premium-photo/hairdressers-makeup-artist-working-beauty-salon_10069-11140.jpg?semt=ais_hybrid&w=740&q=80" alt="img" />
+              </div>
+              <div className="p-3 pt-1 ">
+                <div className="flex justify-between items-center mb-1 ">
                 <h3 className="font-semibold">{salon.name}</h3>
                 <div className="flex items-center gap-1 text-yellow-500 text-sm">
                   <FaStar /> {salon.rating}
@@ -329,6 +332,7 @@ const HomeSection3 = () => {
                 <button className="text-indigo-600 font-medium hover:underline">
                   See More
                 </button>
+              </div>
               </div>
             </div>
           ))}

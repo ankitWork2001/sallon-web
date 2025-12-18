@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { TiHome } from "react-icons/ti";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
@@ -153,4 +153,4 @@ const SuperAdminNavbar = () => {
   );
 }
 
-export default SuperAdminNavbar;
+export default memo(SuperAdminNavbar);

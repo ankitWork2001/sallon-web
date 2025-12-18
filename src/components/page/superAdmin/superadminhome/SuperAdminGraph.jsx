@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   ResponsiveContainer,
   BarChart,
@@ -91,4 +91,4 @@ const SuperAdminGraph = () => {
   );
 }
 
-export default SuperAdminGraph;
+export default memo(SuperAdminGraph);

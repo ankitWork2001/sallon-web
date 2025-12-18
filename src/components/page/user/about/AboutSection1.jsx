@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { FaCheckCircle } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -121,4 +121,4 @@ const AboutSection1 = () => {
   );
 };
 
-export default AboutSection1;
+export default memo(AboutSection1);

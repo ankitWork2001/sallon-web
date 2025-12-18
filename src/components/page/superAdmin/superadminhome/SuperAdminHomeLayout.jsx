@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import SuperAdminHeader from './SuperAdminHeader'
 import SuperAdminPerformance from '../SuperAdminPerformance'
 import SuperAdminLowPerformance from './SuperAdminLowPerformance'
@@ -27,4 +27,4 @@ const SuperAdminHomeLayout = () => {
   )
 }
 
-export default SuperAdminHomeLayout
+export default memo(SuperAdminHomeLayout)
