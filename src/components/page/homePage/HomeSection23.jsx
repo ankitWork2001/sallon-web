@@ -15,7 +15,7 @@ const HomeSection23 = (props) => {
             .then(res => res.json())
             .then((data) => setCategories(data))
             .catch((err) => console.log(err))
-    }, []);
+    }, [props.category]);
 
         if (!categories) return <p>Loading...</p>;  
     return (

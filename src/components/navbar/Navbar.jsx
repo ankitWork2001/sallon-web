@@ -29,12 +29,12 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const goToServices = () => {
-    navigate("/#services"); // navigate to home with hash
+    navigate("/#services"); 
 
     setTimeout(() => {
       const section = document.getElementById("services");
       section?.scrollIntoView({ behavior: "smooth" });
-    }, 100); // little delay for page load
+    }, 100); 
   };
 
   return (
@@ -75,11 +75,6 @@ const Navbar = () => {
           >
             <button className='px-3 rounded-2xl p-1  cursor-pointer bg-white'>Partner With Register</button>
           </NavLink>
-
-          {/* <div className='border rounded-2xl px-2 p-0.5 flex gap-2 items-center '>
-            <IoSearch />
-            <input className='outline-0 w-full' type="text" name="" id="search" placeholder='Search salons, services, or areas...' />
-          </div> */}
         </ul>
 
         <div className='flex gap-2 items-center '>

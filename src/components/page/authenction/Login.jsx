@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-  import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
 
-      const notify = (value) => toast(value);
+  const notify = (value) => toast(value);
 
 
   const navigate = useNavigate()
@@ -16,59 +16,61 @@ const Login = () => {
   }
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
     if (!form.email || !form.password) {
-      alert('Please fill all required fields')
+      notify("Please fill all required fields");
       return
     }
+    try {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const raw = JSON.stringify({
+        "email": form.email,
+        "password": form.password
+      });
 
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+      };
 
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+     const data= await fetch(`${import.meta.env.VITE_API_URL}auth/login`, requestOptions)
+        const result = await data.json()
+          console.log(result.status, 'r')
+          console.log(result)
+          notify(result.message)
+          if (result.message == "Login successful") {
+            localStorage.setItem("authtoken", result.token);
+            localStorage.setItem("userrole", result.user.role);
 
-    const raw = JSON.stringify({
-      "email": form.email,
-      "password": form.password
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
-    };
-
-    fetch(`${import.meta.env.VITE_API_URL}auth/login`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-        notify(result.message)
-        localStorage.setItem("authtoken", result.token);
-        localStorage.setItem("userrole", result.user.role);
-        if (result.user?.role === "customer") {
-          localStorage.setItem("userdata", JSON.stringify(result.user));
-          navigate("/")
-          setForm({ email: "", password: "" });
-        } else if (result.user.role === "salon_owner") {
-          localStorage.setItem("admindata", JSON.stringify(result.user));
-          navigate('/admin')
-          setForm({ email: "", password: "" });
-        } else {
-          localStorage.setItem("superadmindata", JSON.stringify(result.user));
-          navigate("/superadmin")
-          setForm({ email: "", password: "" });
-        }
-      })
-      .catch((error) => console.error(error));
-    setForm({ email: "", password: "" });
+          }
+          if (result.user?.role === "customer") {
+            localStorage.setItem("userdata", JSON.stringify(result.user));
+            navigate("/")
+            setForm({ email: "", password: "" });
+          } else if (result.user.role === "salon_owner") {
+            localStorage.setItem("admindata", JSON.stringify(result.user));
+            navigate('/admin')
+            setForm({ email: "", password: "" });
+          } else {
+            localStorage.setItem("superadmindata", JSON.stringify(result.user));
+            navigate("/superadmin")
+            setForm({ email: "", password: "" });
+          }
+    } catch (error) {
+      console.error(error)
+      setForm({ email: "", password: "" });
+    }
   }
 
 
   return (
     <div>
       <ToastContainer
-      theme="light"
+        theme="light"
       />
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
