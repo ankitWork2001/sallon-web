@@ -104,7 +104,7 @@ const HomeSection3 = () => {
       </button>
       <div className="flex bg-gray-50 md:h-190 ">
 
-        {open && <div className={`w-1/3 bg-white absolute  rounded-2xl p-5 shadow-sm md:hidden md:overflow-y-scroll  scrollbar-hideen   transition-all ease-in  ${open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
+        {open && <div className={`w-[70%] bg-white absolute  rounded-2xl p-5 shadow-sm md:hidden md:overflow-y-scroll  scrollbar-hideen   transition-all ease-in  ${open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
           <div className='flex justify-end p-2'><p onClick={() => setOpen(false)} className='text-red-500 text-xl'>X</p></div>
 
           <div className="flex justify-between items-center mb-4">
@@ -296,7 +296,7 @@ const HomeSection3 = () => {
         </div>
 
         {/* Salon Cards */}
-        <div className="flex-1 grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4  md:overflow-y-scroll scrollbar-hideen">
+        <div className="flex-1 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:px-4  md:overflow-y-scroll scrollbar-hideen">
           {salon.map((salon) => (
             <div
               key={salon.id}
