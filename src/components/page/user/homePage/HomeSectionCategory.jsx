@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const HomeSection23 = (props) => {
+const HomeSectionCategory = (props) => {
     const [categories, setCategories] = useState('');
 
 
@@ -84,4 +84,4 @@ const HomeSection23 = (props) => {
     )
 }
 
-export default memo(HomeSection23)
+export default memo(HomeSectionCategory)

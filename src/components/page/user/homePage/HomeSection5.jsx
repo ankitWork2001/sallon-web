@@ -1,5 +1,5 @@
 import React, { useEffect, memo, useState } from 'react'
-import popularNearMe from '../../data'
+import popularNearMe from '../../../data'
 import { FaClock, FaMapMarkerAlt, FaRupeeSign, FaStar } from 'react-icons/fa'
 
 const HomeSection5 = () => {

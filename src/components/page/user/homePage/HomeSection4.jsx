@@ -2,7 +2,7 @@ import React, { useEffect, memo, useState } from "react";
 import { FaStar, FaRupeeSign, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { RiColorFilterAiLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { getSalondata } from "../../../redux/userSlice/homeSalon";
+import { getSalondata } from "../../../../redux/userSlice/homeSalon";
 
 const HomeSection3 = () => {
   const [priceRange, setPriceRange] = useState(2000);

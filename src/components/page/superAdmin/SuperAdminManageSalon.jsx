@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import CardLoader from '../homePage/CardLoader';
+import CardLoader from '../user/homePage/CardLoader';
 import { getdata } from '../../../redux/superAdmin/SuperAdmin';
 import { Link } from "react-router-dom"
 

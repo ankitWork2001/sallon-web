@@ -3,7 +3,7 @@ import { FiEdit2, FiTrash2, FiClock } from "react-icons/fi";
 import { BeatLoader } from 'react-spinners';
 import { getDataAdmin } from '../../../redux/adminSlice/adminSlice';
 import { useDispatch, useSelector } from "react-redux"
-import CardLoader from '../homePage/CardLoader';
+import CardLoader from '../user/homePage/CardLoader';
 
 const AdminService = () => {
   const [serviceItems, setServiceItems] = useState('');

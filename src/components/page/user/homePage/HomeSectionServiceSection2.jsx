@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 
-const HomeSection25 = () => {
+const HomeSectionServiceSection2 = () => {
   return (
     <div className="bg-gradient-to-r from-[#FFF7F1] to-[#FFEDE2] mt-4   md:p-6">
       <div className="grid md:grid-cols-2 gap-5 items-center overflow-hidden">
@@ -42,4 +42,4 @@ const HomeSection25 = () => {
   )
 }
 
-export default  memo(HomeSection25);
+export default  memo(HomeSectionServiceSection2);

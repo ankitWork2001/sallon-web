@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react'
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { useSelector, useDispatch } from "react-redux"
 import { getdata } from '../../../redux/superAdmin/SuperAdmin';
-import CardLoader from '../homePage/CardLoader';
+import CardLoader from '../user/homePage/CardLoader';
 import { CiCircleRemove } from "react-icons/ci";
 
 const SuperAdminManageCategory = () => {

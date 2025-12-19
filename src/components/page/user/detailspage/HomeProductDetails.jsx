@@ -3,7 +3,7 @@ import React, { memo, useEffect } from 'react'
 // import { SlCursor } from "react-icons/sl";
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSalondata } from '../../../redux/userSlice/homeSalon';
+import { getSalondata } from '../../../../redux/userSlice/homeSalon';
 
 const HomeProductDetails = () => {
   const { id } = useParams();

@@ -3,7 +3,7 @@ import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { CiCircleRemove } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { getDataAdmin } from '../../../redux/adminSlice/adminSlice';
-import CardLoader from '../homePage/CardLoader';
+import CardLoader from '../user/homePage/CardLoader';
 
 
 const AdminSpecialist = () => {

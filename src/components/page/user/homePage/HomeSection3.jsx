@@ -3,10 +3,10 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import CardLoader from "./CardLoader";
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
-import { getSalondata } from "../../../redux/userSlice/homeSalon";
-import HomeSection23 from "./HomeSection23";
+import { getSalondata } from "../../../../redux/userSlice/homeSalon";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import HomeSectionCategory from "./HomeSectionCategory";
 
 const HomeSection3 = () => {
   const [category, setCategory] = useState("men");
@@ -103,7 +103,7 @@ const HomeSection3 = () => {
         </div>
 
         <div >
-          <HomeSection23 category={category} />
+          <HomeSectionCategory category={category} />
         </div>
 
         <div className='flex justify-between p-2'>

@@ -1,6 +1,6 @@
 import React, { memo, use, useEffect, useState } from 'react'
 import { FaMapMarkerAlt, FaStar, FaRupeeSign, FaClock } from "react-icons/fa";
-import popularNearMe from '../../data';
+import popularNearMe from '../../../data';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from 'react-router-dom';

@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { getdata } from '../../../redux/superAdmin/SuperAdmin';
 import { FaUser, FaPhone, FaEnvelope, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import CardLoader from '../homePage/CardLoader';
+import CardLoader from '../user/homePage/CardLoader';
 
 
 const SuperAdminManageUser = () => {
