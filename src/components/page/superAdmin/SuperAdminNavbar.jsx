@@ -5,18 +5,20 @@ import { IoMdNotifications } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import SuperAdminSideBar from './SuperAdminSideBar';
 import { LuCalendar, LuChartNoAxesColumnIncreasing, LuSettings, LuUser } from 'react-icons/lu';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const SuperAdminNavbar = () => {
 
   const [open, setOpen] = useState(false);
   const [sideopen, setSideopen] = useState(false)
   const superadminData = JSON.parse(localStorage.getItem('superadmindata'))
+const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('authtoken')
     localStorage.removeItem('superadmindata')
     localStorage.removeItem('userrole')
+    navigate("/login");
   }
   return (
     <div>
