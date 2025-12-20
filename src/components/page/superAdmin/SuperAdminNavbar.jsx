@@ -20,6 +20,7 @@ const navigate = useNavigate();
     localStorage.removeItem('userrole')
     navigate("/login");
   }
+  
   return (
     <div>
       <div style={{ background: 'var(--primary-gradient)' }} className=" font-medium w-full">

@@ -1,33 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useForm } from 'react-hook-form'
+import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod/src/zod.js';
 const Login = () => {
-
   const notify = (value) => toast(value);
-
-
   const navigate = useNavigate()
-  const [form, setForm] = useState({ email: '', password: '' })
-  const handleChange = (e) => {
-    // const { name, value } = e.target
-    // setForm((prev) => ({ ...prev, [name]: value }))
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  
+  const schema = z.object({
+    email: z.string().email("please enter valid email"),
+    password: z.string().min(5, "valid password 5 later"),
+  })
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: zodResolver(schema) })
 
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    if (!form.email || !form.password) {
-      notify("Please fill all required fields");
-      return
-    }
+
+  const onSubmit = async (data) => {
     try {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       const raw = JSON.stringify({
-        "email": form.email,
-        "password": form.password
+        "email": data.email,
+        "password": data.password
       });
 
       const requestOptions = {
@@ -37,32 +32,29 @@ const Login = () => {
         redirect: "follow"
       };
 
-     const data= await fetch(`${import.meta.env.VITE_API_URL}auth/login`, requestOptions)
-        const result = await data.json()
-          console.log(result.status, 'r')
-          console.log(result)
-          notify(result.message)
-          if (result.message == "Login successful") {
-            localStorage.setItem("authtoken", result.token);
-            localStorage.setItem("userrole", result.user.role);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}auth/login`, requestOptions)
+      const result = await response.json()
+      console.log(result)
+      notify(result.message)
+      reset()
+      if (result.message == "Login successful") {
+        localStorage.setItem("authtoken", result.token);
+        localStorage.setItem("userrole", result.user.role);
 
-          }
-          if (result.user?.role === "customer") {
-            localStorage.setItem("userdata", JSON.stringify(result.user));
-            navigate("/")
-            setForm({ email: "", password: "" });
-          } else if (result.user.role === "salon_owner") {
-            localStorage.setItem("admindata", JSON.stringify(result.user));
-            navigate('/admin')
-            setForm({ email: "", password: "" });
-          } else {
-            localStorage.setItem("superadmindata", JSON.stringify(result.user));
-            navigate("/superadmin")
-            setForm({ email: "", password: "" });
-          }
+      }
+      if (result.user?.role === "customer") {
+        localStorage.setItem("userdata", JSON.stringify(result.user));
+        navigate("/")
+      } else if (result.user.role === "salon_owner") {
+        localStorage.setItem("admindata", JSON.stringify(result.user));
+        navigate('/admin')
+      } else {
+        localStorage.setItem("superadmindata", JSON.stringify(result.user));
+        navigate("/superadmin")
+      }
     } catch (error) {
-      console.error(error)
-      setForm({ email: "", password: "" });
+      console.log(error)
+      reset()
     }
   }
 
@@ -76,7 +68,7 @@ const Login = () => {
         <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Login</h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
             {/* Email */}
             <div>
@@ -88,14 +80,15 @@ const Login = () => {
                 id="email"
                 name="email"
                 type="email"
-                value={form.email}
-                onChange={handleChange}
+                {...register('email')}
+                // value={form.email}
+                // onChange={handleChange}
                 placeholder="you@example.com"
                 autoComplete="email"
 
-                required
                 className="mt-1 block w-full rounded-md outline-0 shadow-sm focus:border-indigo-500 p-3 focus:ring-indigo-500 sm:text-sm"
               />
+              {errors.email && <p className='text-red-600 font-semibold text-sm p-1'>{errors.email?.message}</p>}
             </div>
 
             {/* Password */}
@@ -107,16 +100,17 @@ const Login = () => {
                 style={{ background: "var(--secondary)" }}
                 id="password"
                 name="password"
+                {...register("password")}
                 type="password"
-                value={form.password}
-                onChange={handleChange}
+                // value={form.password}
+                // onChange={handleChange}
                 placeholder="Enter a secure password"
                 autoComplete="current-password"
-                required
                 className="mt-1 block w-full rounded-md outline-0 shadow-sm focus:border-indigo-500 p-3 focus:ring-indigo-500 sm:text-sm"
               />
+              {errors.password && <p className='text-red-600 font-semibold text-sm p-1'>{errors.password?.message}</p>}
             </div>
-            <button type="submit" style={{ background: "var(--primary-gradient)" }} className="w-full inline-flex justify-center items-center px-4 py-2  text-white font-medium rounded-md  focus:outline-none focus:ring-2 cursor-pointer ">
+            <button type="submit" onClick={handleSubmit(onSubmit)} style={{ background: "var(--primary-gradient)" }} className="w-full inline-flex justify-center items-center px-4 py-2  text-white font-medium rounded-md  focus:outline-none focus:ring-2 cursor-pointer ">
               Login
             </button>
           </form>
